@@ -5,17 +5,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:panchayat/components/my_button.dart';
 import 'package:panchayat/components/my_textfield.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwController = TextEditingController();
 
-  //tap to go to register page
+  //tap to go to login page
   final void Function()? onTap;
 
-  LoginPage({super.key, this.onTap});
+  RegisterPage({super.key, this.onTap});
 
-  //login function
-  void login() {}
+  //register function
+  void register() {}
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +36,10 @@ class LoginPage extends StatelessWidget {
 
             //welcome back message
             Text(
-              "Welcome Back , you've been missed!",
+              "Let's create an account for you",
               style: GoogleFonts.exo2(
                 textStyle: TextStyle(
-                  fontSize: 19,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -63,10 +63,18 @@ class LoginPage extends StatelessWidget {
 
             const SizedBox(height: 25),
 
+            //confirm password textfield
+            MyTextField(
+              hintText: "Confirm Password",
+              controller: _pwController,
+            ),
+
+            const SizedBox(height: 25),
+
             //login button
             MyButton(
-              text: "Login",
-              onTap: login,
+              text: "Register",
+              onTap: register,
             ),
 
             const SizedBox(height: 15),
@@ -75,11 +83,11 @@ class LoginPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Not a member? "),
+                Text("Already a member? "),
                 GestureDetector(
                   onTap: onTap,
                   child: Text(
-                    " Register Now!",
+                    " Login Now!",
                     style: TextStyle(
                       color: const Color.fromARGB(255, 3, 61, 250),
                     ),
