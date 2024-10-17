@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panchayat/auth/auth_service.dart';
 import 'package:panchayat/components/my_button.dart';
 import 'package:panchayat/components/my_textfield.dart';
 
 class RegisterPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwController = TextEditingController();
+  final TextEditingController _confirmPwController = TextEditingController();
 
   //tap to go to login page
   final void Function()? onTap;
@@ -15,7 +17,40 @@ class RegisterPage extends StatelessWidget {
   RegisterPage({super.key, this.onTap});
 
   //register function
-  void register() {}
+  void register(BuildContext context) async {
+    //get auth service
+    final auth = AuthService();
+    if (_pwController.text == _confirmPwController.text) {
+      try {
+        auth.signUpWithEmailPassword(
+          _emailController.text,
+          _pwController.text,
+        );
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+          ),
+        );
+      }
+    }
+    //passwords dont match -> tell user to fix
+    else {
+      showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+          title: Text(
+            "Passwords don't match!",
+            style: TextStyle(
+              color: Colors.red,
+              fontSize: 20,
+            ),
+          ),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +101,7 @@ class RegisterPage extends StatelessWidget {
             //confirm password textfield
             MyTextField(
               hintText: "Confirm Password",
-              controller: _pwController,
+              controller: _confirmPwController,
             ),
 
             const SizedBox(height: 25),
@@ -74,7 +109,7 @@ class RegisterPage extends StatelessWidget {
             //login button
             MyButton(
               text: "Register",
-              onTap: register,
+              onTap: () => register(context),
             ),
 
             const SizedBox(height: 15),

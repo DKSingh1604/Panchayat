@@ -1,8 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:panchayat/auth/login_or_register.dart';
+import 'package:panchayat/auth/auth_gate.dart';
 import 'package:panchayat/firebase_options.dart';
-import 'package:panchayat/pages/register_page.dart';
 import 'package:panchayat/themes/light_mode.dart';
 
 void main() async {
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginOrRegister(),
+      home: const AuthGate(),
       theme: lightMode,
     );
   }

@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panchayat/auth/auth_service.dart';
 import 'package:panchayat/components/my_button.dart';
 import 'package:panchayat/components/my_textfield.dart';
 
@@ -15,7 +16,28 @@ class LoginPage extends StatelessWidget {
   LoginPage({super.key, this.onTap});
 
   //login function
-  void login() {}
+  void login(BuildContext context) async {
+    //auth service
+    final authService = AuthService();
+
+    //try login
+    try {
+      await authService.signInWithEmailPassword(
+        _emailController.text,
+        _pwController.text,
+      );
+    } catch (e) {
+      //show error
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
+
+    //catch any errors
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +88,7 @@ class LoginPage extends StatelessWidget {
             //login button
             MyButton(
               text: "Login",
-              onTap: login,
+              onTap: () => login(context),
             ),
 
             const SizedBox(height: 15),
