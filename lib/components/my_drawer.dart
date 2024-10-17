@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:panchayat/auth/auth_service.dart';
+import 'package:panchayat/services/auth/auth_service.dart';
 import 'package:panchayat/pages/settings_page.dart';
 
 class MyDrawer extends StatelessWidget {

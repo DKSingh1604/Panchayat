@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panchayat/auth/auth_service.dart';
+import 'package:panchayat/services/auth/auth_service.dart';
 import 'package:panchayat/components/my_button.dart';
 import 'package:panchayat/components/my_textfield.dart';
 
