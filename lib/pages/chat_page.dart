@@ -93,12 +93,46 @@ class _ChatPageState extends State<ChatPage> {
   Widget _buildMessageItem(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
+    //is current user
     bool isCurrentUser = data['senderId'] == _authService.getCurrentUser()!.uid;
 
+    //align to the right if sender is the current user, else left
     var alignment =
         isCurrentUser ? Alignment.centerRight : Alignment.centerLeft;
 
-    return Text(data["message"]);
+    // return Row(
+    //   mainAxisAlignment:
+    //       isCurrentUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+    //   children: [
+    //     Container(
+    //       margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+    //       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+    //       decoration: BoxDecoration(
+    //         color: isCurrentUser ? Colors.blue[100] : Colors.grey[200],
+    //         borderRadius: BorderRadius.circular(12.0),
+    //       ),
+    //       child: Text(
+    //         data["message"],
+    //         style: TextStyle(
+    //           fontSize: 14.0,
+    //           color: isCurrentUser
+    //               ? Colors.black
+    //               : const Color.fromARGB(221, 238, 4, 4),
+    //         ),
+    //       ),
+    //     ),
+    //   ],
+    // );
+
+    return Container(
+      alignment: alignment,
+      child: Column(
+          crossAxisAlignment:
+              isCurrentUser ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+          children: [
+            Text(data['message']),
+          ]),
+    );
   }
 
   Widget _buildUserInput() {
