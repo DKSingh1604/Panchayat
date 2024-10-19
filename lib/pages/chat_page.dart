@@ -4,21 +4,27 @@ import 'package:panchayat/components/my_textfield.dart';
 import 'package:panchayat/services/auth/auth_service.dart';
 import 'package:panchayat/services/chat/chat_service.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   final String receiverEmail;
   final String receiverID;
 
-  ChatPage({
+  const ChatPage({
     super.key,
     required this.receiverEmail,
     required this.receiverID,
   });
 
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
   //text controller
   final TextEditingController _messageController = TextEditingController();
 
   //chat and auth services
   final ChatService _chatService = ChatService();
+
   final AuthService _authService = AuthService();
 
   //send message
@@ -26,8 +32,8 @@ class ChatPage extends StatelessWidget {
     //if there is something in the textfield
     if (_messageController.text.isNotEmpty) {
       //send message
-      await _chatService.sendMessage(receiverEmail, _messageController.text);
-      debugPrint('Message sent: ${_messageController.text}');
+      await _chatService.sendMessage(
+          widget.receiverID, _messageController.text); //CHECK
 
       //clear textfield
       _messageController.clear();
@@ -38,7 +44,10 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(receiverEmail),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black,
+        elevation: 0,
+        title: Text(widget.receiverEmail),
         centerTitle: true,
       ),
       body: Column(
@@ -59,7 +68,7 @@ class ChatPage extends StatelessWidget {
   Widget _buildMessageList() {
     String senderID = _authService.getCurrentUser()!.uid;
     return StreamBuilder(
-      stream: _chatService.getMessages(receiverID, senderID),
+      stream: _chatService.getMessages(widget.receiverID, senderID),
       builder: (context, snapshot) {
         //errors
         if (snapshot.hasError) {
@@ -83,6 +92,11 @@ class ChatPage extends StatelessWidget {
   //build message item
   Widget _buildMessageItem(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+    bool isCurrentUser = data['senderId'] == _authService.getCurrentUser()!.uid;
+
+    var alignment =
+        isCurrentUser ? Alignment.centerRight : Alignment.centerLeft;
 
     return Text(data["message"]);
   }
