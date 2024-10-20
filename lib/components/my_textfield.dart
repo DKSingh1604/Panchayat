@@ -15,7 +15,7 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 13.0),
       child: TextField(
         obscureText: (hintText == "Password" || hintText == "Confirm Password")
             ? true
@@ -23,6 +23,7 @@ class MyTextField extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50),
             borderSide: BorderSide(
               color: Theme.of(context).colorScheme.tertiary,
             ),

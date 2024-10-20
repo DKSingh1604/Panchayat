@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:panchayat/components/chat_bubble.dart';
 import 'package:panchayat/components/my_textfield.dart';
 import 'package:panchayat/services/auth/auth_service.dart';
 import 'package:panchayat/services/chat/chat_service.dart';
@@ -44,7 +45,7 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.deepOrange[300],
         foregroundColor: Colors.black,
         elevation: 0,
         title: Text(widget.receiverEmail),
@@ -94,44 +95,16 @@ class _ChatPageState extends State<ChatPage> {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
     //is current user
-    bool isCurrentUser = data['senderId'] == _authService.getCurrentUser()!.uid;
-
-    //align to the right if sender is the current user, else left
-    var alignment =
-        isCurrentUser ? Alignment.centerRight : Alignment.centerLeft;
-
-    // return Row(
-    //   mainAxisAlignment:
-    //       isCurrentUser ? MainAxisAlignment.end : MainAxisAlignment.start,
-    //   children: [
-    //     Container(
-    //       margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-    //       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-    //       decoration: BoxDecoration(
-    //         color: isCurrentUser ? Colors.blue[100] : Colors.grey[200],
-    //         borderRadius: BorderRadius.circular(12.0),
-    //       ),
-    //       child: Text(
-    //         data["message"],
-    //         style: TextStyle(
-    //           fontSize: 14.0,
-    //           color: isCurrentUser
-    //               ? Colors.black
-    //               : const Color.fromARGB(221, 238, 4, 4),
-    //         ),
-    //       ),
-    //     ),
-    //   ],
-    // );
+    bool isCurrentUser = data['senderID'] == _authService.getCurrentUser()!.uid;
 
     return Container(
-      alignment: alignment,
-      child: Column(
-          crossAxisAlignment:
-              isCurrentUser ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-          children: [
-            Text(data['message']),
-          ]),
+      child: Row(
+        mainAxisAlignment:
+            isCurrentUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+        children: [
+          ChatBubble(message: data["message"], isCurrentUser: isCurrentUser),
+        ],
+      ),
     );
   }
 
@@ -141,7 +114,7 @@ class _ChatPageState extends State<ChatPage> {
         //textfield should take up most of the space
         Expanded(
           child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 15.0),
+            margin: const EdgeInsets.symmetric(vertical: 20.0),
             child: MyTextField(
               controller: _messageController,
               hintText: "Type a message....",
@@ -152,10 +125,14 @@ class _ChatPageState extends State<ChatPage> {
 
         //send button
         Container(
-          margin: const EdgeInsets.only(right: 12.0),
+          decoration: const BoxDecoration(
+            color: Colors.green,
+            shape: BoxShape.circle,
+          ),
+          margin: const EdgeInsets.only(right: 17.0),
           child: IconButton(
             onPressed: sendMessage,
-            icon: const Icon(Icons.arrow_upward),
+            icon: const Icon(Icons.arrow_upward, color: Colors.white),
           ),
         ),
       ],
