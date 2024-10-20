@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class UserTile extends StatelessWidget {
   final String text;
@@ -28,12 +29,27 @@ class UserTile extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(25.0),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               //icon
-              Icon(Icons.person),
+              Container(
+                margin: const EdgeInsets.only(right: 20),
+                child: Icon(
+                  Icons.person,
+                  size: 40,
+                ),
+              ),
 
               //username
-              Text(text),
+              Text(
+                text,
+                style: GoogleFonts.abel(
+                  textStyle: TextStyle(
+                    letterSpacing: 1.95,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

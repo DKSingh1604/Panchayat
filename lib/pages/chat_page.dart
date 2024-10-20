@@ -48,7 +48,7 @@ class _ChatPageState extends State<ChatPage> {
         backgroundColor: Colors.deepOrange[300],
         foregroundColor: Colors.black,
         elevation: 0,
-        title: Text(widget.receiverEmail),
+        title: Text(widget.receiverID),
         centerTitle: true,
       ),
       body: Column(
