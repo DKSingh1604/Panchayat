@@ -31,6 +31,8 @@ class _ChatPageState extends State<ChatPage> {
 
   final AuthService _authService = AuthService();
 
+  final ScrollController _scrollController = ScrollController();
+
   //for textfield focus
 
   FocusNode myFocusNode = FocusNode();
@@ -38,12 +40,13 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-    //add listener to focus mode
+
+    // add listener to focus mode
     myFocusNode.addListener(() {
       if (myFocusNode.hasFocus) {
         //cause delay
         Future.delayed(
-          Duration(milliseconds: 500),
+          const Duration(milliseconds: 500),
           () => scrollDown(),
         );
       }
@@ -57,13 +60,12 @@ class _ChatPageState extends State<ChatPage> {
     super.dispose();
   }
 
-  //scroll controller
-  final ScrollController _scrollController = ScrollController();
+  // scroll controller
   void scrollDown() {
     _scrollController.animateTo(
       _scrollController.position.maxScrollExtent,
-      duration: const Duration(seconds: 1),
-      curve: Curves.fastLinearToSlowEaseIn,
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.fastEaseInToSlowEaseOut,
     );
   }
 
@@ -78,6 +80,7 @@ class _ChatPageState extends State<ChatPage> {
       //clear textfield
       _messageController.clear();
     }
+    scrollDown();
   }
 
   @override
@@ -100,16 +103,28 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          //display messages(majority)
-          Expanded(
-            child: _buildMessageList(),
-          ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          // Detect when the keyboard is open or closed
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (MediaQuery.of(context).viewInsets.bottom > 0) {
+              // If the keyboard is open, scroll to the bottom
+              scrollDown();
+            }
+          });
 
-          //user input
-          _buildUserInput(),
-        ],
+          return Column(
+            children: [
+              //display messages (majority)
+              Expanded(
+                child: _buildMessageList(),
+              ),
+
+              //user input
+              _buildUserInput(),
+            ],
+          );
+        },
       ),
     );
   }
@@ -131,6 +146,8 @@ class _ChatPageState extends State<ChatPage> {
         }
 
         //return list view
+        WidgetsBinding.instance.addPostFrameCallback((_) => scrollDown());
+
         return ListView(
           controller: _scrollController,
           children:
@@ -147,14 +164,12 @@ class _ChatPageState extends State<ChatPage> {
     //is current user
     bool isCurrentUser = data['senderID'] == _authService.getCurrentUser()!.uid;
 
-    return Container(
-      child: Row(
-        mainAxisAlignment:
-            isCurrentUser ? MainAxisAlignment.end : MainAxisAlignment.start,
-        children: [
-          ChatBubble(message: data["message"], isCurrentUser: isCurrentUser),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment:
+          isCurrentUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: [
+        ChatBubble(message: data["message"], isCurrentUser: isCurrentUser),
+      ],
     );
   }
 
