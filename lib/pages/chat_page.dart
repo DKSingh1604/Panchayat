@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:panchayat/components/chat_bubble.dart';
 import 'package:panchayat/components/my_textfield.dart';
 import 'package:panchayat/services/auth/auth_service.dart';
 import 'package:panchayat/services/chat/chat_service.dart';
+import 'package:panchayat/themes/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class ChatPage extends StatefulWidget {
   final String receiverEmail;
@@ -28,6 +31,19 @@ class _ChatPageState extends State<ChatPage> {
 
   final AuthService _authService = AuthService();
 
+  //for textfield focus
+
+  FocusNode myFocusNode = FocusNode();
+
+  //add listener to focus mode
+
+  // myFocusNode.addListener(() {
+  //   if (myFocusNode.hasFocus) {
+  //     //cause a delay
+  //     Future.delayed(const Duration(milliseconds: 500), () => scrollDown, )
+  //   }
+  // });
+
   //send message
   void sendMessage() async {
     //if there is something in the textfield
@@ -45,11 +61,21 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange[300],
-        foregroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
-        title: Text(widget.receiverID),
+        title: Text(widget.receiverEmail),
         centerTitle: true,
+        actions: [
+          //REMOVE AFTERWARDS
+          CupertinoSwitch(
+            value:
+                Provider.of<ThemeProvider>(context, listen: false).isDarkMode,
+            onChanged: (value) =>
+                Provider.of<ThemeProvider>(context, listen: false)
+                    .toggleTheme(),
+          ),
+        ],
       ),
       body: Column(
         children: [

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:panchayat/components/my_drawer.dart';
 import 'package:panchayat/components/user_tile.dart';
 import 'package:panchayat/pages/chat_page.dart';
@@ -20,8 +21,14 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Center(
-          child: const Text(
-            "Home Page",
+          child: Text(
+            'Home Page',
+            style: GoogleFonts.bebasNeue(
+              textStyle: TextStyle(
+                  letterSpacing: 2.5,
+                  fontSize: 22,
+                  color: Theme.of(context).colorScheme.primary),
+            ),
           ),
         ),
       ),
