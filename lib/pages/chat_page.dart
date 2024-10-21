@@ -35,14 +35,37 @@ class _ChatPageState extends State<ChatPage> {
 
   FocusNode myFocusNode = FocusNode();
 
-  //add listener to focus mode
+  @override
+  void initState() {
+    super.initState();
+    //add listener to focus mode
+    myFocusNode.addListener(() {
+      if (myFocusNode.hasFocus) {
+        //cause delay
+        Future.delayed(
+          Duration(milliseconds: 500),
+          () => scrollDown(),
+        );
+      }
+    });
+  }
 
-  // myFocusNode.addListener(() {
-  //   if (myFocusNode.hasFocus) {
-  //     //cause a delay
-  //     Future.delayed(const Duration(milliseconds: 500), () => scrollDown, )
-  //   }
-  // });
+  @override
+  void dispose() {
+    myFocusNode.dispose();
+    _messageController.dispose();
+    super.dispose();
+  }
+
+  //scroll controller
+  final ScrollController _scrollController = ScrollController();
+  void scrollDown() {
+    _scrollController.animateTo(
+      _scrollController.position.maxScrollExtent,
+      duration: const Duration(seconds: 1),
+      curve: Curves.fastLinearToSlowEaseIn,
+    );
+  }
 
   //send message
   void sendMessage() async {
@@ -109,6 +132,7 @@ class _ChatPageState extends State<ChatPage> {
 
         //return list view
         return ListView(
+          controller: _scrollController,
           children:
               snapshot.data!.docs.map((doc) => _buildMessageItem(doc)).toList(),
         );
@@ -144,7 +168,8 @@ class _ChatPageState extends State<ChatPage> {
             child: MyTextField(
               controller: _messageController,
               hintText: "Type a message....",
-              //obscureText: false,
+              obscureText: false,
+              focusNode: myFocusNode,
             ),
           ),
         ),

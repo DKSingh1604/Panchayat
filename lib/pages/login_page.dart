@@ -9,6 +9,7 @@ import 'package:panchayat/components/my_textfield.dart';
 class LoginPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwController = TextEditingController();
+  final FocusNode myFocusNode = FocusNode();
 
   //tap to go to register page
   final void Function()? onTap;
@@ -73,6 +74,8 @@ class LoginPage extends StatelessWidget {
             MyTextField(
               hintText: "Email",
               controller: _emailController,
+              obscureText: false,
+              focusNode: myFocusNode,
             ),
 
             const SizedBox(height: 20),
@@ -81,6 +84,8 @@ class LoginPage extends StatelessWidget {
             MyTextField(
               hintText: "Password",
               controller: _pwController,
+              obscureText: true,
+              focusNode: myFocusNode,
             ),
 
             const SizedBox(height: 25),

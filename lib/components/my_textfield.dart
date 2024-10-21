@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 class MyTextField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
+  final FocusNode? focusNode;
+  final bool obscureText;
 
   const MyTextField({
     super.key,
     required this.hintText,
     required this.controller,
+    required this.focusNode,
+    required this.obscureText,
   });
 
   @override
