@@ -46,7 +46,7 @@ class _ChatPageState extends State<ChatPage> {
       if (myFocusNode.hasFocus) {
         //cause delay
         Future.delayed(
-          const Duration(milliseconds: 500),
+          const Duration(milliseconds: 750),
           () => scrollDown(),
         );
       }
@@ -75,7 +75,7 @@ class _ChatPageState extends State<ChatPage> {
     if (_messageController.text.isNotEmpty) {
       //send message
       await _chatService.sendMessage(
-          widget.receiverID, _messageController.text); //CHECK
+          widget.receiverID, _messageController.text);
 
       //clear textfield
       _messageController.clear();
@@ -168,7 +168,12 @@ class _ChatPageState extends State<ChatPage> {
       mainAxisAlignment:
           isCurrentUser ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
-        ChatBubble(message: data["message"], isCurrentUser: isCurrentUser),
+        ChatBubble(
+          message: data["message"],
+          isCurrentUser: isCurrentUser,
+          messageID: doc.id,
+          userID: data['senderID'],
+        ),
       ],
     );
   }
