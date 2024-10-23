@@ -58,86 +58,107 @@ class RegisterPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            //logo
-            Icon(
-              Icons.message,
-              size: 80,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-
-            const SizedBox(height: 20),
-
-            //welcome back message
-            Text(
-              "Let's create an account for you",
-              style: GoogleFonts.exo2(
-                textStyle: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            //email textfield
-            MyTextField(
-              hintText: "Email",
-              controller: _emailController,
-              obscureText: false,
-              focusNode: myFocusNode,
-            ),
-
-            const SizedBox(height: 20),
-
-            //password textfield
-            MyTextField(
-              hintText: "Password",
-              controller: _pwController,
-              obscureText: true,
-              focusNode: myFocusNode,
-            ),
-
-            const SizedBox(height: 25),
-
-            //confirm password textfield
-            MyTextField(
-              hintText: "Confirm Password",
-              controller: _confirmPwController,
-              obscureText: true,
-              focusNode: myFocusNode,
-            ),
-
-            const SizedBox(height: 25),
-
-            //login button
-            MyButton(
-              text: "Register",
-              onTap: () => register(context),
-            ),
-
-            const SizedBox(height: 15),
-
-            //register now
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Already a member? "),
-                GestureDetector(
-                  onTap: onTap,
-                  child: Text(
-                    " Login Now!",
-                    style: TextStyle(
-                      color: const Color.fromARGB(255, 3, 61, 250),
-                    ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //logo
+              ClipRect(
+                child: Align(
+                  alignment: Alignment.center,
+                  heightFactor: 0.5,
+                  // widthFactor: 0.5,
+                  child: Image.asset(
+                    'lib/images/logo.png',
+                    height: 300,
+                    width: 350,
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+
+              const SizedBox(height: 40),
+
+              Text(
+                "REGISTER",
+                style: GoogleFonts.oswald(
+                  textStyle: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              //welcome back message
+              Text(
+                "Let's create an account for you",
+                style: GoogleFonts.exo2(
+                  textStyle: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              //email textfield
+              MyTextField(
+                hintText: "Email",
+                controller: _emailController,
+                obscureText: false,
+                focusNode: myFocusNode,
+              ),
+
+              const SizedBox(height: 20),
+
+              //password textfield
+              MyTextField(
+                hintText: "Password",
+                controller: _pwController,
+                obscureText: true,
+                focusNode: myFocusNode,
+              ),
+
+              const SizedBox(height: 25),
+
+              //confirm password textfield
+              MyTextField(
+                hintText: "Confirm Password",
+                controller: _confirmPwController,
+                obscureText: true,
+                focusNode: myFocusNode,
+              ),
+
+              const SizedBox(height: 25),
+
+              //login button
+              MyButton(
+                text: "Register",
+                onTap: () => register(context),
+              ),
+
+              const SizedBox(height: 15),
+
+              //register now
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Already a member? "),
+                  GestureDetector(
+                    onTap: onTap,
+                    child: Text(
+                      " Login Now!",
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 3, 61, 250),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

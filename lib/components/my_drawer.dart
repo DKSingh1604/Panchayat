@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:panchayat/services/auth/auth_service.dart';
 import 'package:panchayat/pages/settings_page.dart';
 
@@ -24,22 +25,36 @@ class MyDrawer extends StatelessWidget {
             children: [
               //logo
               DrawerHeader(
-                child: Center(
-                  child: Icon(
-                    Icons.message,
-                    color: Theme.of(context).colorScheme.primary,
-                    size: 70,
+                child: ClipRect(
+                  child: Align(
+                    alignment: Alignment.center,
+                    heightFactor: 0.9,
+                    // widthFactor: 0.5,
+                    child: Image.asset(
+                      'lib/images/logo.png',
+                      height: 300,
+                      width: 350,
+                    ),
+                  ),
+                ),
+              ),
+
+              Text(
+                "MENU",
+                style: GoogleFonts.oswald(
+                  textStyle: TextStyle(
+                    fontSize: 25,
                   ),
                 ),
               ),
 
               //home list tile
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(10.0),
                 child: ListTile(
                   leading: Icon(Icons.home, size: 30),
                   title: const Text(
-                    "H O M E",
+                    "HOME PAGE",
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
@@ -52,7 +67,7 @@ class MyDrawer extends StatelessWidget {
               //settings list tile
 
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(10.0),
                 child: ListTile(
                   leading: Icon(Icons.settings, size: 30),
                   title: const Text(
@@ -81,15 +96,18 @@ class MyDrawer extends StatelessWidget {
           //logout tile
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: ListTile(
-              leading: Icon(Icons.logout_sharp, size: 30),
-              title: const Text(
-                "L O G O U T",
-                style: TextStyle(
-                  fontSize: 18,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: ListTile(
+                leading: Icon(Icons.logout_sharp, size: 30),
+                title: const Text(
+                  "L O G O U T",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
                 ),
+                onTap: logout,
               ),
-              onTap: logout,
             ),
           ),
         ],

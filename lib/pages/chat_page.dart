@@ -92,16 +92,6 @@ class _ChatPageState extends State<ChatPage> {
         elevation: 0,
         title: Text(widget.receiverEmail),
         centerTitle: true,
-        actions: [
-          //REMOVE AFTERWARDS
-          CupertinoSwitch(
-            value:
-                Provider.of<ThemeProvider>(context, listen: false).isDarkMode,
-            onChanged: (value) =>
-                Provider.of<ThemeProvider>(context, listen: false)
-                    .toggleTheme(),
-          ),
-        ],
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -203,7 +193,7 @@ class _ChatPageState extends State<ChatPage> {
           margin: const EdgeInsets.only(right: 17.0),
           child: IconButton(
             onPressed: sendMessage,
-            icon: const Icon(Icons.arrow_upward, color: Colors.white),
+            icon: const Icon(Icons.arrow_forward, color: Colors.white),
           ),
         ),
       ],

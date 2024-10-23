@@ -20,7 +20,7 @@ class SettingsPage extends StatelessWidget {
         elevation: 0,
         title: Text(
           'Settings',
-          style: GoogleFonts.lato(
+          style: GoogleFonts.bebasNeue(
             textStyle: const TextStyle(letterSpacing: 1.95),
             color: Theme.of(context).colorScheme.primary,
           ),

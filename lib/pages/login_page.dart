@@ -44,22 +44,39 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             //logo
-            Icon(
-              Icons.message,
-              size: 80,
-              color: Theme.of(context).colorScheme.primary,
+            ClipRect(
+              child: Align(
+                alignment: Alignment.center,
+                heightFactor: 0.9,
+                // widthFactor: 0.5,
+                child: Image.asset(
+                  'lib/images/logo.png',
+                  height: 300,
+                  width: 350,
+                ),
+              ),
+            ),
+
+            Text(
+              "LOGIN",
+              style: GoogleFonts.oswald(
+                textStyle: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
 
             const SizedBox(height: 20),
 
             //welcome back message
             Text(
-              "Welcome Back , you've been missed!",
+              "Welcome Back to Panchayat!",
               style: GoogleFonts.exo2(
                 textStyle: TextStyle(
                   fontSize: 19,
