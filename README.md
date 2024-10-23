@@ -1,16 +1,4 @@
-# panchayat
+# Panchayat
 
-A new Flutter project.
+A minimal chat application made using Flutter(Dart) with all the basic production level features like chatting, contact management, reporting messages, blocking users, light/dark mode and the most needed email login authentication where the user data is stored in Firebase and reflected through it on the app.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
