@@ -50,7 +50,7 @@ Panchayat is a production-ready chat application that brings people together thr
 
 ## 📱 Screenshots
 
-<div align="center">
+<!-- <div align="center"> -->
 
 ### 🏠 Home Page
 <img src="./ss/home_page.png" width="300" alt="Home Page - User List">
