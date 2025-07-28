@@ -1,4 +1,8 @@
+<div align="center">
+
 <img src="./assets/bg_removed.png" width="300" alt="LOGO">
+
+</div>
 # Panchayat
 
 <div align="center">
