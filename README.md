@@ -59,23 +59,29 @@ Panchayat is a production-ready chat application that brings people together thr
 
 ### 🏠 Login and Register Page
 <img src="./ss/login.png" alt="Login page" width="300"/>
-&nbsp
+&nbsp&nbsp
 <img src="./ss/register.png" alt="Regsiter page" width="300"/>
 
 ### 🏠 Home Page
-<img src="./ss/home_page.png" width="300" alt="Home Page - User List">
-
-### ⚙️ Chat Page Block Feature
-<img src="./ss/chat_block.png" width="300" alt="Settings Page">
-
-
+<img src="./ss/home_page.png" alt="Home page" width="300"/>
+&nbsp&nbsp
+<img src="./ss/home_light.png" alt="Home page" width="300"/>
 
 ### 💬 Chat Interface  
-<img src="./ss/chat_screen.png" width="300" alt="Chat Screen">
+<img src="./ss/chat_screen.png" alt="Chat page" width="300"/>
+&nbsp&nbsp
+<img src="./ss/chat_light.png" alt="Chat page" width="300"/>
+
+### ⚙️ Block Feature
+<img src="./ss/block_dark.png" alt="Chat page" width="300"/>
+&nbsp&nbsp
+<img src="./ss/block_light.png" alt="Chat page" width="300"/>
 
 
 ### ⚙️ Settings & Customization
-<img src="./ss/settings.png" width="300" alt="Settings Page">
+<img src="./ss/settings.png" alt="Settings page" width="300"/>
+&nbsp&nbsp
+<img src="./ss/settings_light.png" alt="Settings page" width="300"/>
 
 
 
