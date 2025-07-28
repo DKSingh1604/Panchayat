@@ -21,7 +21,7 @@
 
 ## 📋 Overview
 
-Panchayat is a production-ready chat application that brings people together through seamless communication. Built with Flutter and powered by Firebase, it offers a comprehensive set of features for modern messaging needs while maintaining a clean, intuitive user interface.
+Panchayat is a open-world chat application that brings people together through seamless communication. Built with Flutter and powered by Firebase, it offers a comprehensive set of features for modern messaging needs while maintaining a clean, intuitive user interface.
 
 ## ✨ Features
 
@@ -90,8 +90,6 @@ Panchayat is a production-ready chat application that brings people together thr
 </div>
 
 ---
-
-**Additional Screenshots:** More UI images are available in the [`App Images`](./App%20Images/) folder.
 
 ## 🚀 Installation
 
