@@ -50,11 +50,28 @@ Panchayat is a production-ready chat application that brings people together thr
 
 ## 📱 Screenshots
 
-The application screenshots are available in the [`App Images`](./App%20Images/) folder:
+<div align="center">
 
-| Login & Registration | Home & Chat | Settings & Theme |
-|:---:|:---:|:---:|
-| Modern authentication UI | Real-time messaging interface | Customizable user preferences |
+### 🏠 Home Page
+<img src="./ss/home_page.png" width="300" alt="Home Page - User List">
+
+*Clean and intuitive home interface showing available users for chat*
+
+### 💬 Chat Interface  
+<img src="./ss/chat_screen.png" width="300" alt="Chat Screen">
+
+*Real-time messaging with modern chat bubbles and smooth animations*
+
+### ⚙️ Settings & Customization
+<img src="./ss/settings.png" width="300" alt="Settings Page">
+
+*Comprehensive settings with theme switching and user management options*
+
+</div>
+
+---
+
+**Additional Screenshots:** More UI images are available in the [`App Images`](./App%20Images/) folder.
 
 ## 🚀 Installation
 
