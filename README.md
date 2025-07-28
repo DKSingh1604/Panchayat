@@ -3,7 +3,7 @@
 <img src="./assets/bg_removed.png" width="300" alt="LOGO">
 
 </div>
-# Panchayat
+
 
 <div align="center">
 
@@ -56,6 +56,11 @@ Panchayat is a production-ready chat application that brings people together thr
 ## 📱 Screenshots
 
 <div align="center">
+
+### 🏠 Login and Register Page
+<img src="./ss/login.png" alt="Login page" width="300"/>
+&nbsp
+<img src="./ss/register.png" alt="Regsiter page" width="300"/>
 
 ### 🏠 Home Page
 <img src="./ss/home_page.png" width="300" alt="Home Page - User List">
