@@ -1,4 +1,5 @@
-# 💬 Panchayat
+<img src="./assets/bg_removed.png" width="500" alt="LOGO">
+# Panchayat
 
 <div align="center">
 

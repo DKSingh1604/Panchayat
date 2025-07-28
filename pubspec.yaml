@@ -67,6 +67,7 @@ flutter:
   assets:
     # - lib/images/profile.jpeg
     - lib/images/logo.png
+    - assets/
 
     # - images/a_dot_ham.jpeg
 

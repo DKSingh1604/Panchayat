@@ -114,8 +114,8 @@ class _LoginPageState extends State<LoginPage>
                             ),
                             child: ClipRRect(
                               child: Image.asset(
-                                'lib/images/logo.png',
-                                height: 120,
+                                'assets/bg_removed.png',
+                                height: 160,
                                 width: 250,
                                 fit: BoxFit.cover,
                               ),

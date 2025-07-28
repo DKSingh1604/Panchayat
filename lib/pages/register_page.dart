@@ -135,9 +135,9 @@ class _RegisterPageState extends State<RegisterPage>
                             ),
                             child: ClipRRect(
                               child: Image.asset(
-                                'lib/images/logo.png',
+                                'assets/bg_removed.png',
                                 height: 120,
-                                width: 250,
+                                width: 200,
                                 fit: BoxFit.cover,
                               ),
                             ),

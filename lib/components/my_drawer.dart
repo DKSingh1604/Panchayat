@@ -30,10 +30,13 @@ class MyDrawer extends StatelessWidget {
                     alignment: Alignment.center,
                     heightFactor: 0.9,
                     // widthFactor: 0.5,
-                    child: Image.asset(
-                      'lib/images/logo.png',
-                      height: 300,
-                      width: 350,
+                    child: ClipRRect(
+                      child: Image.asset(
+                        'assets/bg_removed.png',
+                        height: 140,
+                        width: 220,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
